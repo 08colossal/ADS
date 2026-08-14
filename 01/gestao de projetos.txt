@@ -1,0 +1,21 @@
+https://www.onset.com.br/blog/escopo-de-projeto/
+https://ler.amazon.com.br/kp/embed?linkCode=kpd&asin=B01HDVG69W&tag=livrariapubli-20
+
+tpa e partes interessadas
+
+EAP : 
+em organograma!
+Curva S : % da conclusão do trabalho, quando ta atrasado/adiantado, gráfico de duas curvas
+
+// ------------------- // ------------------ // ----------------------- // -------------------- // ----------------------- // -------------
+CRONOGRAMA : 
+- o nosso tem q ir até setembro de 2026
+6 processos de planejamento:
+1. planejar, 2. definir as atividades, 3. sequenciar as atividades, 4. estimar a duração das atividades, 5. desenvolver o cronograma 
+P.P. Monitoramento e controle: 6. controlar o cronograma
+
+ex de atividades: no desenv backend as atividades são;
+escolher a linguagem, criar arquivos, criar repositório, desen banco de dados, método de detecção de IA, de proteção de dados, ligar com o front....
+
+fazer o de gannt, n precisa o de rede
+atividades, duraçãoo e linha de base é o mínimo necessario

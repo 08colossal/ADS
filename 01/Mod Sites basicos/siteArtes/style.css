@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+Double+Pica+SC&family=Notable&display=swap');
+.notable-regular {
+  font-family: "Notable", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.im-fell-double-pica-sc-regular {
+  font-family: "IM Fell Double Pica SC", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+body{
+color:black;
+}
+header{
+    color:white;
+}
+.menu{
+    color:black;
+}

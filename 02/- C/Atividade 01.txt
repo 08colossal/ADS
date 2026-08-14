@@ -1,0 +1,59 @@
+//Atividade 01
+#include <stdio.h>
+
+float calcularArea(float base, float alt){
+    return (base + alt)/2.0;
+}
+int main()
+{
+    float area, a, b;
+    printf("Digite o valor da base: ");
+    scanf("%f", &a);
+    printf("Digite o valor da altura: ");
+    scanf("%f", &b);
+    area = calcularArea(a, b);
+    printf("Area: %.0f\n", area);
+    return 0;
+}
+
+//Atividade 02
+#include <stdio.h>
+
+float calcularArea(float base, float alt){
+    return (base + alt)/2.0;
+}
+int main()
+{
+    float area, a, b;
+    printf("Digite o valor da base: ");
+    scanf("%f", &a);
+    printf("Digite o valor da altura: ");
+    scanf("%f", &b);
+    area = calcularArea(a, b);
+    printf("Area: %.0f\n", area);
+    return 0;
+}
+
+//Atividade 03
+#include <stdio.h>
+
+void classificar_temp(float temp){
+    if (temp <= 15){
+        printf("Clima frio");
+    }
+    else if (temp <= 25){
+        printf("Clima agradável");
+    }
+    else{
+        printf("Clima quente");
+    }
+}
+int main()
+{
+    float temperatura;
+    printf("Digite a temperatura: ");
+    scanf("%f", &temperatura);
+    classificar_temp(temperatura);
+    return 0;
+}
+

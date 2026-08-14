@@ -1,0 +1,193 @@
+atividade 8 (aula 9)
+
+1.
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <string.h>
+
+struct alunos{
+        char nome[50];
+        int idade;
+        float nota;
+};
+
+int main() {
+    struct alunos aluno[2];
+    
+    for(int i = 0; i < 3; i++){
+        printf("Digite os dados do aluno %d\nNome: ", i+1);
+        fgets(aluno[i].nome, sizeof(aluno[i].nome), stdin);
+        aluno[i].nome[strcspn(aluno[i].nome, "\n")] = '\0';
+        
+        printf("\nIdade: ");
+        scanf("%d", &aluno[i].idade);
+        getchar();
+        
+        printf("\nNota final: ");
+        scanf("%f", &aluno[i].nota);
+        getchar();
+        
+        printf("\n");
+    }
+    for(int i = 0; i < 3; i++){
+        printf("\nO aluno %d, %s, com %d anos de idade com nota %.1f ", i+1, aluno[i].nome, aluno[i].idade, aluno[i].nota);
+        if (aluno[i].nota >= 7){
+            printf("está aprovado!");
+        }
+        else if(aluno[i].nota >= 4){
+            printf("está de recuperação!");
+        }
+        else{
+            printf("está reprovado.");
+        }
+    }
+    
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+2.
+
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <string.h>
+
+struct produtos{
+        char nome[50];
+        int id;
+        int qtd;
+        float preco;
+};
+
+int main() {
+    struct produtos item[4];
+    
+    for(int i = 0; i < 5; i++){
+        printf("Digite os dados do produto %d\nNome: ", i+1);
+        fgets(item[i].nome, sizeof(item[i].nome), stdin);
+        item[i].nome[strcspn(item[i].nome, "\n")] = '\0';
+        
+        printf("\nID: ");
+        scanf("%d", &item[i].id);
+        getchar();
+        
+        printf("\nQuantidade: ");
+        scanf("%d", &item[i].qtd);
+        getchar();
+        
+        printf("\nPreço: ");
+        scanf("%f", &item[i].preco);
+        getchar();
+        
+        printf("\n");
+    }
+    
+    for(int i = 0; i < 5; i++){
+        printf("\nO produto %d, '%s', valor R$%.2f, tem %d unidades. O valor total do estoque é: R$%.2f", item[i].id, item[i].nome, item[i].preco, item[i].qtd, item[i].qtd*item[i].preco);
+    }
+    
+    printf("\n\nSão produtos com baixo estoque: ");
+    
+    for (int i =0; i < 5; i++){
+        if (item[i].qtd < 5){
+            printf("%s, ", item[i].nome);
+        }
+    }
+    
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+3.
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <string.h>
+
+struct funcionario{
+        int id;
+        char nome[50];
+        int idade;
+        float salario;
+        char setor[20];
+};
+
+int main() {
+    struct funcionario pessoa[3];
+    float media = 0;
+    int maior = 0;
+    char rico[50];
+    
+    for(int i = 0; i < 4; i++){
+        printf("Digite os dados do funcionário %d\nNome: ", i+1);
+        fgets(pessoa[i].nome, sizeof(pessoa[i].nome), stdin);
+        pessoa[i].nome[strcspn(pessoa[i].nome, "\n")] = '\0';
+        
+        printf("\nID: ");
+        scanf("%d", &pessoa[i].id);
+        getchar();
+        
+        printf("\nIdade: ");
+        scanf("%d", &pessoa[i].idade);
+        getchar();
+        
+        printf("\nSalário: ");
+        scanf("%f", &pessoa[i].salario);
+        getchar();
+        
+        media = media + pessoa[i].salario;
+        if (pessoa[i].salario > maior){
+            maior = pessoa[i].salario;
+            strcpy(rico, pessoa[i].nome);
+        }
+        
+        printf("\nSetor: ");
+        fgets(pessoa[i].setor, sizeof(pessoa[i].setor), stdin);
+        pessoa[i].setor[strcspn(pessoa[i].setor, "\n")] = '\0';
+        
+        printf("\n");
+    }
+    
+    for(int i = 0; i < 4; i++){
+        printf("\nFuncionário %s, id[%d], de %d anos de idade, recebe R$%.2f de salário no setor '%s'", pessoa[i].nome, pessoa[i].id, pessoa[i].idade, pessoa[i].salario, pessoa[i].setor);
+    }
+    
+    media = media/4;
+    printf("\n\n A média salarial é: R$%.2f", media);
+    printf("\n\nSão funcionários com salário abaixo da média: ");
+    
+    for (int i =0; i < 4; i++){
+        if (pessoa[i].salario < media){
+            printf("%s, ", pessoa[i].nome);
+        }
+    }
+    
+    printf("\n\n São funcionários maiores de idade: ");
+    for(int i = 0; i < 4; i++){
+        if(pessoa[i].idade >= 18){
+            printf("%s, ", pessoa[i].nome);
+        }
+    }
+    
+    printf("\n\n O funcionário com maior salário é %s!!", rico);
+    
+    return 0;
+}
+
+
+
+
+

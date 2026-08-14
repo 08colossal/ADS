@@ -1,0 +1,92 @@
+//ATIVIDADE
+
+#include <stdio.h>
+//conversor metro - cm, mm, km
+int main()
+{
+    int opcao;
+    float num;
+    float resultado;
+    
+    printf("Digite o número a ser convertido, em metros: ");
+    scanf("%f", &num);
+    
+    printf("Escolha uma conversão de metro para:\n1 - centímetro\n2 - milímetro\n3 - quilômetro\n:");
+    scanf("%d", &opcao);
+    switch (opcao) {
+        case 1:
+            resultado = num * 100;
+            printf("%.0f metros são %.2f centímetros!", num, resultado);
+            break;
+        case 2:
+            resultado = num * 1000;
+            printf("%.0f metros são %.2f milímetros!", num, resultado);
+            break;
+        case 3:
+            resultado = num / 1000;
+            printf("%.0f metros são %.2f quilômetros!", num, resultado);
+            break;
+        default:
+            printf("Valor inválido.");
+            break;
+    }
+    return 0;
+}
+
+
+// DESAFIO 
+
+#include <stdio.h>
+#include <math.h>
+//calculadora + - * / ^ ^/
+int main()
+{
+    int opcao;
+    int num1;
+    int num2;
+    float conta;
+    printf("Opções da calculadora:\n1 - Adição\n2 - Subtração\n3 - Multiplicação\n4 - Divisão\n5 - Potência\n6 - Raiz quadrada\nSua escolha: ");
+    scanf("%d", &opcao);
+    switch (opcao){
+        case 1:
+            printf("Digite os valores da adição: ");
+            scanf("%d %d", &num1, &num2);
+            conta = num1 + num2;
+            printf("O resultado da soma é: %.1f", conta);
+            break;
+        case 2:
+            printf("Digite os valores da subtração: ");
+            scanf("%d %d", &num1, &num2);
+            conta = num1 - num2;
+            printf("O resultado da subtração é: %.1f", conta);
+            break;
+        case 3:
+            printf("Digite os valores da multiplicação: ");
+            scanf("%d %d", &num1, &num2);
+            conta = num1 * num2;
+            printf("O resultado da multiplicação é: %.1f", conta);
+            break;
+        case 4:
+            printf("Digite os valores da divisão: ");
+            scanf("%d %d", &num1, &num2);
+            conta = num1 / num2;
+            printf("O resultado da divisão é: %.1f", conta);
+            break;
+        case 5:
+            printf("Digite os valores da potência (número e radiando): ");
+            scanf("%d %d",&num1, &num2);
+            conta = pow(num1, num2);
+            printf("O resultado da potência é: %.2f", conta);
+            break;
+        case 6:
+            printf("Digite o valor da raíz quadrada: ");
+            scanf("%d", &num1);
+            conta = sqrt(num1);
+            printf("O raíz é: %f", conta);
+            break;
+        default:
+            printf("Opção inválida");
+            break;
+    }
+    return 0;
+}
