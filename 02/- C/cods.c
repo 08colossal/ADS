@@ -37,7 +37,7 @@ int fibonacci_iterativo(int n){
     }
     return b;
 }
-int main(void){
+/*int main(void){
     int n;
     printf("Posição postiva: ");
     scanf("%d", &n);
@@ -52,7 +52,7 @@ int main(void){
     return 0;
 }
 
-/*
+
 
 Caso base: "if (n <= 1){return n;}"
 
@@ -133,7 +133,7 @@ O C O R R E R Ã O
 
 
 
-QUESTÕES DE CÓDIGO:
+QUESTÕES DE CÓDIGO:*/
 
 
 //1
@@ -146,7 +146,7 @@ int socorro(int integer){
         return (integer % 10) + socorro(integer / 10); 
         //123    3 + func(12) -> 2 + func(1) ==== 3 + 2 + 1 = 6
 }
-int main(){
+ int main(){
     
     int positivo;
     printf("Digite um numero inteiro positivo: ");
@@ -160,9 +160,9 @@ int main(){
             return resultado_base;
         }
         return combinacao_com_funcao(problema_menor);
-    }*/
+    }*
     return 0;
-}  
+} */ 
 
 //b
 #include <stdio.h>
@@ -175,10 +175,10 @@ int main(){
         printf("\n%d", soma);
         integer /= 10;
         printf("\n%d",integer);
-    /*se integer = 509 -> 9(soma) 50 9(soma) 5 14(soma) 0 -> soma = 14*/
+    //se integer = 509 -> 9(soma) 50 9(soma) 5 14(soma) 0 -> soma = 14
     }
     return 0;
-} 
+}
 
 
 
