@@ -1,0 +1,145 @@
+atividade 5
+
+//ex1: pergunte alunos da turma, para cada leia a nota de 0 a 10, diga a media da turma, quantos estão aprovados e reprovados 6 media necessária!
+
+#include <stdio.h>
+int main()
+{
+    int q;
+    int nota;
+    int aprovados = 0;
+    int reprovados = 0;
+    float media = 0;
+    
+    printf("Quantos alunos tem na turma?");
+    scanf("%d", &q);
+    for (int i = 0; i < q; i++){
+    	printf("De 0 a 10 - digite sua nota: ");
+    	scanf("%d", &nota);
+    	media = media + nota;
+    	if (nota <= 6){
+    		reprovados++;		
+    		printf("Você foi reprovado!\n\n");
+    	}
+    	else if (nota <= 10){
+    		aprovados++;
+    		printf("Você foi aprovado!\n\n");
+    	}
+    }
+    media = media/q;
+    printf("A média de notas é %.1f\n", media);
+    printf("%d alunos estão aprovados e %d alunos estão reprovados!", aprovados, reprovados);
+
+    return 0;
+}
+
+
+//ex 2: quantas operações quer, para cada operação mostre um menu de + * - e realize a conta;]
+
+#include <stdio.h>
+
+int main()
+{
+    int ops;
+    float num1, num2;
+    char opc;
+
+    printf("Quantas operações deseja realizar? ");
+    scanf("%d", &ops);
+
+    for (int i = 0; i < ops; i++){
+        printf("\nMENU:\nSoma '+'\nSubtração '-'\nMultiplicação 'x'\n");
+        
+        printf("Digite sua opção: ");
+        scanf(" %c", &opc);
+        // o espaço garante que leia depois do \n
+
+        printf("Digite o primeiro número: ");
+        scanf("%f", &num1);
+
+        printf("Digite o segundo número: ");
+        scanf("%f", &num2);
+
+        switch (opc){
+            case '+':
+                printf("O resultado é %.1f\n", num1 + num2);
+                break;
+
+            case '-':
+                printf("O resultado é %.1f\n", num1 - num2);
+                break;
+
+            case 'x':
+                printf("O resultado é %.1f\n", num1 * num2);
+                break;
+
+            default:
+                printf("Opção inválida!\n");
+        }
+    }
+
+    return 0;
+}
+
+
+
+// des: quantos num quer digitar, verifique: + - 0 par e impar; quantos de cada
+
+
+#include <stdio.h>
+
+int main()
+{
+    int qtd, num = 0, pos = 0, neg = 0, zero = 0, par = 0, impar = 0;
+    
+    printf("Quantos números quer digitar?");
+    scanf("%d", &qtd);
+    for (int i = 0; i < qtd; i++){
+    	printf("Digite o número: ");
+    	scanf("%d", &num);
+    	if (num > 0){
+    		pos++;
+    	}
+    	else if (num < 0){
+    		neg++;
+    	}
+    	else if (num == 0){
+    		zero++;
+    	}
+    	else if (num %2 == 0){
+    		par++;
+    	}
+    	else if (num %2 == 1){
+    		impar++;
+    	}
+    }
+    printf("De %d números:\n%d são positivos\n%d são negativos\n%d são zeo\n%d são pares\n%d são ímpares!", num, pos, neg, zero, par, impar);
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

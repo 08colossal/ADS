@@ -1,0 +1,48 @@
+#include <stdio.h>
+
+int main() {
+ //idade, altura, nome
+    int idade;
+    float altura;
+    char nome[50];
+    char simounao;
+    
+    printf("Qual sua idade? Sua altura? Seu nome:\n");
+    scanf("%d %f %s", &idade, &altura, nome);
+    
+    printf("Olá %s, você tem %.1f metros de altura e %d anos, correto?\nS para sim e N para não\n", nome, altura, idade);
+    scanf(" %c", &simounao);
+    
+    if (simounao == 'S' || simounao == 's') {
+        printf("Tudo certo então!");
+    }
+    else if (simounao == 'N' || simounao == 'n'){
+        printf("Responda novamente");
+    }
+    else{
+        printf("Resposta inválida");
+    }
+    
+    return 0;
+}
+
+ALGORITMO
+1.Início
+2.Definir a senha correta como 4321
+3.Solicite que o usuário digite a senha
+4.Leia a senha digitada
+5.Enquanto a senha digitada for diferente da senha correta faça:
+    5.1 Solicite novamente que o usuário digite a senha
+    5.2 Leia a nova senha digitada
+6.Exibir a mensagem “ACESSO LIBERADO”
+7.Fim
+
+PSEUDOCÓDIGO
+INÍCIO
+    senha_correta <- 4321
+    ENQUANTO senha_digitada != senha_correta FAÇA
+        ESCREVA "Digite a senha:"
+        LEIA senha_digitada
+    FIMENQUANTO
+    ESCREVA "ACESSO LIBERADO"
+FIM

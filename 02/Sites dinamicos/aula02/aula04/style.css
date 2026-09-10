@@ -1,0 +1,38 @@
+body{
+    background-color: rgb(38, 38, 38);
+    color: rgb(204, 204, 204);
+}
+
+.formulario{
+    color: rgb(255, 248, 211);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top:1rem;
+    gap:1rem;
+}
+
+input, button{
+    background-color: rgb(57, 57, 57);
+    color: rgb(204, 204, 204);
+    max-width: 20rem;
+}
+
+button{
+    border-radius: 10px;
+}
+
+#historico h1{
+    margin-top:2rem;
+    color:rgb(255, 248, 211);
+    font-size: 30px;
+}
+
+#historico hr{
+    color:rgb(255, 248, 211);
+    width:100%;
+}
+
+#historico{
+    color:rgb(204, 204, 204);
+}

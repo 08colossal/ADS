@@ -1,0 +1,9 @@
+Um site de venda de artes digitais!
+Nome atual: Colossus.Art
+Requisitos: 
+-Página de cadastro
+-Página de login 
+-Página de carrinho/compra
+-Página de usuário
+-Página Inicial com: Produtos, Ad's...
+-Histórico de compras, favoritos...

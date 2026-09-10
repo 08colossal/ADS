@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMG</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js" defer></script>
+</head>
+<body>
+    <form id="forms" class="formulario">
+        <div>
+            <label>Nome:</label>
+            <input type="text" id="id_nome">
+        </div>
+        <div>
+            <label>Check-in no evento segundo o <a>termo de compromisso</a>:</label>
+            <input type="checkbox" id="id_checkIn">
+        </div>
+        <div>
+            <label>Data de nascimento:</label>
+            <input type="date" id="id_data">
+        </div>
+        <button type="submit" onclick="envio()">ENVIAR</button>
+    </form>
+
+    <section id="historico">
+        <h1>Histórico de Check-In's</h1>
+        <hr>
+    </section>
+
+</body>
+</html>

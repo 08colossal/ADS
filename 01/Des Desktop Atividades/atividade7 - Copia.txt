@@ -1,0 +1,180 @@
+atividade8
+
+1.
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char nome[100];
+    char sobrenome[50];
+    int idade;
+    
+    printf("Digite seu nome: ");
+    fgets(nome, sizeof(nome), stdin);
+    nome[strcspn(nome, "\n")] = '\0';
+    
+    printf("\nDigite seu sobrenome: ");
+    fgets(sobrenome, sizeof(sobrenome), stdin);
+    sobrenome[strcspn(sobrenome, "\n")] = '\0';
+    
+    strcat(nome, sobrenome); //junta sobrenome na char nome
+    
+    printf("\nDigite sua idade: ");
+    scanf("%d", &idade);
+    
+    int tamanho = strlen(nome);
+
+    //condicao ? valor_true : valor false
+    printf("O nome %s é: %s, com %d caracteres!", nome, tamanho <= 15 ? "curto" : "longo", tamanho);
+    printf("\nVocê é: %s", idade >= 18 ? "maior de idade" : "menor de idade");
+    printf("\nA primeira letra do nome é %c", nome[0]);
+    
+    for (int i = 0; i < strlen(nome); i++){
+        printf("\n%c (caracter %d)", nome[i], i);
+    }
+    
+    return 0;
+}
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------------
+2.
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char frase[100];
+    char trecho[50];
+    int idade;
+    
+    printf("Digite uma frase: ");
+    fgets(frase, sizeof(frase), stdin);
+    frase[strcspn(frase, "\n")] = '\0';
+    
+    printf("\nDigite que trecho ou palavra quer procurar dentro da frase: ");
+    fgets(trecho, sizeof(trecho), stdin);
+    trecho[strcspn(trecho, "\n")] = '\0';
+    
+    //procurar trecho
+    if(strstr(frase, trecho) != NULL){
+        printf("\nA frase '%s'contém '%s'!", frase, trecho);
+    }
+    else{
+        printf("\nA frase '%s' não contém '%s'!", frase, trecho);
+    }
+    
+    //tamanhos
+    printf("\nTamanho da frase: %d, tamanho do trecho: %d", strlen(frase), strlen(trecho));
+    
+    //condicao ? valor_true : valor_false
+    printf("\nA frase é: %s", idade >= 30 ? "curta" : "longa");
+    
+    return 0;
+}
+
+
+
+
+-------------------------------------------------------------------------------------------------------------
+3.
+
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char nome[100];
+    char sobrenome[50];
+    char email[60];
+    char senha[30];
+    int idade, opc;
+    char email2[60], senha2[30];
+    
+    printf("Digite seu nome: ");
+    fgets(nome, sizeof(nome), stdin);
+    nome[strcspn(nome, "\n")] = '\0';
+    
+    printf("\nDigite seu sobrenome: ");
+    fgets(sobrenome, sizeof(sobrenome), stdin);
+    sobrenome[strcspn(sobrenome, "\n")] = '\0';
+    
+    printf("Digite seu email: ");
+    fgets(email, sizeof(email), stdin);
+    email[strcspn(email, "\n")] = '\0';
+    
+    printf("Digite sua senha: ");
+    fgets(senha, sizeof(senha), stdin);
+    senha[strcspn(senha, "\n")] = '\0';
+    
+    printf("\nDigite sua idade: ");
+    scanf("%d", &idade);
+    getchar();
+    
+    strcat(nome, " ");
+    strcat(nome, sobrenome);
+    
+    do{
+        printf("\n1 - mostrar dados do user\n2 - analisar nome\n3 - validar email\n4 - fazer login\n5 - sair\n");
+        scanf("%d", &opc);
+        getchar();
+        
+        switch(opc){
+            case 1:
+                printf("\nNome: %s\nEmail: %s\nIdade:%d", nome, email, idade);
+                printf("\nVocê é: %s", idade >= 18 ? "maior de idade" : "menor de idade");
+                break;
+            case 2:
+                printf("\nO nome tem %lu caracteres!", strlen(nome));
+                break;
+            case 3:
+                if (strchr(email, '@') != NULL && strstr(email, ".com") != NULL){
+                    printf("Email válido!");
+                }
+                else{
+                    printf("Email inválido.");
+                }
+                break;
+            case 4:
+                printf("Digite seu email: ");
+                fgets(email2, sizeof(email2), stdin);
+                email2[strcspn(email2, "\n")] = '\0';
+                
+                printf("Digite sua senha: ");
+                fgets(senha2, sizeof(senha2), stdin);
+                senha2[strcspn(senha2, "\n")] = '\0';
+                
+                if(strcmp(senha, senha2) == 0 && strcmp(email, email2) == 0){
+                    printf("Login válido!");
+                }
+                else{
+                    printf("Login inválido, email ou senha incorretos.");
+                }
+                break;
+            case 5:
+                printf("Programa encerrado!");
+                break;
+            default:
+                printf("Opção inválida");
+                break;
+        }
+    }
+    while (opc != 5);
+
+    printf("O nome %s é: %s, com %lu caracteres!", nome, strlen(nome) <= 15 ? "curto" : "longo", strlen(nome));
+    printf("\nVocê é: %s", idade >= 18 ? "maior de idade" : "menor de idade");
+    printf("\nA primeira letra do nome é %c", nome[0]);
+    
+    for (int i = 0; i < strlen(nome); i++){
+        printf("\n%c (caracter %d)", nome[i], i);
+    }
+    
+    return 0;
+}
+
+

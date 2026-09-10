@@ -1,0 +1,8 @@
+Switch -> substitui os mil else if's com case's
+
+switch (var) {
+	case valor1:
+		//...
+		break;
+	default:
+		//para nenhum caso anterior, um else da vida

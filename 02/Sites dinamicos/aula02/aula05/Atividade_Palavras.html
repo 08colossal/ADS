@@ -1,0 +1,1023 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Caça-palavras - Eventos JavaScript</title>
+
+    <style>
+
+        body{
+            font-family: Arial;
+            text-align: center;
+        }
+
+        #tabuleiro{
+            display: grid;
+            grid-template-columns: repeat(20, 32px);
+            justify-content: center;
+            gap: 2px;
+            margin-top: 20px;
+        }
+
+        .letra{
+            width: 32px;
+            height: 32px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid black;
+
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .selecionada{
+            background-color: yellow;
+        }
+
+        .encontrada{
+            background-color: lightgreen;
+        }
+
+        #palavras{
+            max-width: 700px;
+            margin: 30px auto;
+        }
+
+        #palavras span{
+            margin: 8px;
+            display: inline-block;
+        }
+
+        .achou{
+            text-decoration: line-through;
+            color: green;
+            font-weight: bold;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Caça-palavras</h1>
+
+    <h2>Eventos JavaScript</h2>
+
+    <p>
+        Clique na primeira letra da palavra e depois na última.
+    </p>
+
+    <div id="tabuleiro"></div>
+
+    <div id="palavras"></div>
+
+
+    <script>
+
+        // =====================================================
+        // PALAVRAS
+        // =====================================================
+
+        let palavras = [
+
+            "CLICK",
+            "DBLCLICK",
+
+            "MOUSEDOWN",
+            "MOUSEUP",
+            "MOUSEMOVE",
+            "MOUSEOVER",
+            "MOUSEOUT",
+            "MOUSEENTER",
+            "MOUSELEAVE",
+
+            "KEYDOWN",
+            "KEYUP",
+
+            "INPUT",
+            "CHANGE",
+
+            "SUBMIT",
+            "RESET",
+
+            "FOCUS",
+            "BLUR",
+
+            "LOAD",
+            "UNLOAD",
+
+            "RESIZE",
+            "SCROLL",
+
+            "COPY",
+            "CUT",
+            "PASTE",
+
+            "DRAG",
+            "DRAGSTART",
+            "DRAGEND",
+            "DRAGOVER",
+            "DROP",
+
+            "CONTEXTMENU",
+
+            "TOUCHSTART",
+            "TOUCHMOVE",
+            "TOUCHEND"
+
+        ];
+
+
+        // =====================================================
+        // CONFIGURAÇÕES
+        // =====================================================
+
+        let tamanho = 20;
+
+        let matriz = [];
+
+        let inicio = null;
+
+        let fim = null;
+
+
+        // Guarda palavras encontradas
+
+        let palavrasEncontradas = [];
+
+
+        // Guarda posição das palavras encontradas
+
+        let posicoesEncontradas = [];
+
+
+        // =====================================================
+        // DIREÇÕES
+        // =====================================================
+
+        let direcoes = [
+
+            [0, 1],      // direita
+
+            [0, -1],     // esquerda
+
+            [1, 0],      // baixo
+
+            [-1, 0],     // cima
+
+            [1, 1],      // diagonal
+
+            [-1, -1],    // diagonal contrário
+
+            [1, -1],     // diagonal
+
+            [-1, 1]      // diagonal
+
+        ];
+
+
+        // =====================================================
+        // CRIAR MATRIZ VAZIA
+        // =====================================================
+
+        function criarMatriz(){
+
+            matriz = [];
+
+
+            for(let linha = 0; linha < tamanho; linha++){
+
+                matriz[linha] = [];
+
+
+                for(let coluna = 0; coluna < tamanho; coluna++){
+
+                    matriz[linha][coluna] = "";
+
+                }
+
+            }
+
+        }
+
+
+        // =====================================================
+        // COLOCAR PALAVRAS JÁ ENCONTRADAS
+        // =====================================================
+
+        function colocarPalavrasEncontradas(){
+
+            posicoesEncontradas.forEach(function(dados){
+
+                for(let i = 0; i < dados.letras.length; i++){
+
+                    let letra = dados.letras[i];
+
+
+                    matriz[letra.linha][letra.coluna] =
+                        letra.valor;
+
+                }
+
+            });
+
+        }
+
+
+        // =====================================================
+        // VERIFICAR POSIÇÃO PROTEGIDA
+        // =====================================================
+
+        function posicaoProtegida(linha, coluna){
+
+            let protegida = false;
+
+
+            posicoesEncontradas.forEach(function(dados){
+
+                dados.letras.forEach(function(letra){
+
+                    if(
+                        letra.linha === linha &&
+                        letra.coluna === coluna
+                    ){
+
+                        protegida = true;
+
+                    }
+
+                });
+
+            });
+
+
+            return protegida;
+
+        }
+
+
+        // =====================================================
+        // COLOCAR PALAVRA
+        // =====================================================
+
+        function colocarPalavra(palavra){
+
+            let colocada = false;
+
+            let tentativas = 0;
+
+
+            while(
+                colocada === false &&
+                tentativas < 1000
+            ){
+
+                tentativas++;
+
+
+                let linha =
+                    Math.floor(Math.random() * tamanho);
+
+
+                let coluna =
+                    Math.floor(Math.random() * tamanho);
+
+
+                let direcao =
+                    direcoes[
+                        Math.floor(
+                            Math.random() * direcoes.length
+                        )
+                    ];
+
+
+                let linhaFinal =
+                    linha +
+                    direcao[0] *
+                    (palavra.length - 1);
+
+
+                let colunaFinal =
+                    coluna +
+                    direcao[1] *
+                    (palavra.length - 1);
+
+
+                // ---------------------------------------------
+                // VERIFICAR SE CABE
+                // ---------------------------------------------
+
+                if(
+                    linhaFinal < 0 ||
+                    linhaFinal >= tamanho ||
+                    colunaFinal < 0 ||
+                    colunaFinal >= tamanho
+                ){
+
+                    continue;
+
+                }
+
+
+                let podeColocar = true;
+
+
+                // ---------------------------------------------
+                // VERIFICAR POSIÇÕES
+                // ---------------------------------------------
+
+                for(let i = 0; i < palavra.length; i++){
+
+                    let l =
+                        linha + direcao[0] * i;
+
+
+                    let c =
+                        coluna + direcao[1] * i;
+
+
+                    // Não pode mexer em palavra já encontrada
+
+                    if(posicaoProtegida(l, c)){
+
+                        podeColocar = false;
+
+                        break;
+
+                    }
+
+
+                    if(
+                        matriz[l][c] !== "" &&
+                        matriz[l][c] !== palavra[i]
+                    ){
+
+                        podeColocar = false;
+
+                        break;
+
+                    }
+
+                }
+
+
+                // ---------------------------------------------
+                // COLOCAR PALAVRA
+                // ---------------------------------------------
+
+                if(podeColocar){
+
+                    for(let i = 0; i < palavra.length; i++){
+
+                        let l =
+                            linha + direcao[0] * i;
+
+
+                        let c =
+                            coluna + direcao[1] * i;
+
+
+                        matriz[l][c] =
+                            palavra[i];
+
+                    }
+
+
+                    colocada = true;
+
+                }
+
+            }
+
+        }
+
+
+        // =====================================================
+        // PREENCHER LETRAS ALEATÓRIAS
+        // =====================================================
+
+        function preencherLetras(){
+
+            let letras =
+                "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+
+            for(let linha = 0; linha < tamanho; linha++){
+
+                for(let coluna = 0; coluna < tamanho; coluna++){
+
+                    if(matriz[linha][coluna] === ""){
+
+                        let posicao =
+                            Math.floor(
+                                Math.random() *
+                                letras.length
+                            );
+
+
+                        matriz[linha][coluna] =
+                            letras[posicao];
+
+                    }
+
+                }
+
+            }
+
+        }
+
+
+        // =====================================================
+        // GERAR JOGO
+        // =====================================================
+
+        function gerarJogo(){
+
+            criarMatriz();
+
+
+            // Coloca primeiro aquilo que já foi encontrado
+
+            colocarPalavrasEncontradas();
+
+
+            // Coloca somente palavras ainda não encontradas
+
+            palavras.forEach(function(palavra){
+
+                if(
+                    !palavrasEncontradas.includes(palavra)
+                ){
+
+                    colocarPalavra(palavra);
+
+                }
+
+            });
+
+
+            // Preenche os espaços vazios
+
+            preencherLetras();
+
+
+            // Atualiza tabuleiro
+
+            mostrarTabuleiro();
+
+        }
+
+
+        // =====================================================
+        // MOSTRAR TABULEIRO
+        // =====================================================
+
+        function mostrarTabuleiro(){
+
+            let tabuleiro =
+                document.querySelector("#tabuleiro");
+
+
+            tabuleiro.innerHTML = "";
+
+
+            for(let linha = 0; linha < tamanho; linha++){
+
+                for(let coluna = 0; coluna < tamanho; coluna++){
+
+                    let quadrado =
+                        document.createElement("div");
+
+
+                    quadrado.classList.add("letra");
+
+
+                    quadrado.textContent =
+                        matriz[linha][coluna];
+
+
+                    // -----------------------------------------
+                    // LETRA DE PALAVRA JÁ ENCONTRADA
+                    // -----------------------------------------
+
+                    if(posicaoProtegida(linha, coluna)){
+
+                        quadrado.classList.add(
+                            "encontrada"
+                        );
+
+                    }
+
+
+                    // -----------------------------------------
+                    // EVENTO CLICK
+                    // -----------------------------------------
+
+                    quadrado.addEventListener(
+                        "click",
+                        function(){
+
+                            selecionar(
+                                linha,
+                                coluna,
+                                quadrado
+                            );
+
+                        }
+                    );
+
+
+                    tabuleiro.appendChild(
+                        quadrado
+                    );
+
+                }
+
+            }
+
+        }
+
+
+        // =====================================================
+        // MOSTRAR PALAVRAS
+        // =====================================================
+
+        let lista =
+            document.querySelector("#palavras");
+
+
+        palavras.forEach(function(palavra){
+
+            let span =
+                document.createElement("span");
+
+
+            span.textContent =
+                palavra;
+
+
+            span.id =
+                "palavra-" + palavra;
+
+
+            lista.appendChild(
+                span
+            );
+
+        });
+
+
+        // =====================================================
+        // SELEÇÃO
+        // =====================================================
+
+        function selecionar(linha, coluna, elemento){
+
+            // Não permite clicar em letras já encontradas
+
+            if(posicaoProtegida(linha, coluna)){
+
+                return;
+
+            }
+
+
+            // =================================================
+            // PRIMEIRO CLIQUE
+            // =================================================
+
+            if(inicio === null){
+
+                inicio = {
+
+                    linha: linha,
+                    coluna: coluna
+
+                };
+
+
+                elemento.classList.add(
+                    "selecionada"
+                );
+
+            }
+
+
+            // =================================================
+            // SEGUNDO CLIQUE
+            // =================================================
+
+            else{
+
+                fim = {
+
+                    linha: linha,
+                    coluna: coluna
+
+                };
+
+
+                verificarPalavra();
+
+
+                inicio = null;
+
+                fim = null;
+
+            }
+
+        }
+
+
+        // =====================================================
+        // VERIFICAR PALAVRA
+        // =====================================================
+
+        function verificarPalavra(){
+
+            let diferencaLinha =
+                fim.linha - inicio.linha;
+
+
+            let diferencaColuna =
+                fim.coluna - inicio.coluna;
+
+
+            let passoLinha = 0;
+
+            let passoColuna = 0;
+
+
+            // =================================================
+            // DIREÇÃO
+            // =================================================
+
+            if(diferencaLinha > 0){
+
+                passoLinha = 1;
+
+            }
+
+
+            if(diferencaLinha < 0){
+
+                passoLinha = -1;
+
+            }
+
+
+            if(diferencaColuna > 0){
+
+                passoColuna = 1;
+
+            }
+
+
+            if(diferencaColuna < 0){
+
+                passoColuna = -1;
+
+            }
+
+
+            // =================================================
+            // SOMENTE LINHA RETA OU DIAGONAL
+            // =================================================
+
+            if(
+                diferencaLinha !== 0 &&
+                diferencaColuna !== 0 &&
+                Math.abs(diferencaLinha) !==
+                Math.abs(diferencaColuna)
+            ){
+
+                limparSelecao();
+
+                return;
+
+            }
+
+
+            let linha =
+                inicio.linha;
+
+
+            let coluna =
+                inicio.coluna;
+
+
+            let palavraSelecionada = "";
+
+
+            let elementos = [];
+
+
+            let posicoes = [];
+
+
+            // =================================================
+            // PEGAR TODAS AS LETRAS
+            // =================================================
+
+            while(true){
+
+                palavraSelecionada +=
+                    matriz[linha][coluna];
+
+
+                let indice =
+                    linha * tamanho + coluna;
+
+
+                let elemento =
+                    document.querySelectorAll(".letra")[indice];
+
+
+                elementos.push(
+                    elemento
+                );
+
+
+                posicoes.push({
+
+                    linha: linha,
+
+                    coluna: coluna,
+
+                    valor:
+                        matriz[linha][coluna]
+
+                });
+
+
+                if(
+                    linha === fim.linha &&
+                    coluna === fim.coluna
+                ){
+
+                    break;
+
+                }
+
+
+                linha += passoLinha;
+
+                coluna += passoColuna;
+
+            }
+
+
+            // =================================================
+            // VERIFICAR PALAVRA NORMAL
+            // =================================================
+
+            let palavraEncontrada =
+                palavras.includes(
+                    palavraSelecionada
+                );
+
+
+            // =================================================
+            // VERIFICAR PALAVRA INVERTIDA
+            // =================================================
+
+            let palavraInvertida =
+                palavraSelecionada
+                .split("")
+                .reverse()
+                .join("");
+
+
+            if(
+                palavras.includes(
+                    palavraInvertida
+                )
+            ){
+
+                palavraSelecionada =
+                    palavraInvertida;
+
+
+                palavraEncontrada =
+                    true;
+
+            }
+
+
+            // =================================================
+            // VERIFICAR SE JÁ FOI ENCONTRADA
+            // =================================================
+
+            if(
+                palavrasEncontradas.includes(
+                    palavraSelecionada
+                )
+            ){
+
+                palavraEncontrada =
+                    false;
+
+            }
+
+
+            // =================================================
+            // ACERTOU
+            // =================================================
+
+            if(palavraEncontrada){
+
+                // Guarda a palavra
+
+                palavrasEncontradas.push(
+                    palavraSelecionada
+                );
+
+
+                // Guarda a posição
+
+                posicoesEncontradas.push({
+
+                    palavra:
+                        palavraSelecionada,
+
+                    letras:
+                        posicoes
+
+                });
+
+
+                // Colorir letras
+
+                elementos.forEach(
+                    function(elemento){
+
+                        elemento.classList.remove(
+                            "selecionada"
+                        );
+
+
+                        elemento.classList.add(
+                            "encontrada"
+                        );
+
+                    }
+                );
+
+
+                // Riscar palavra
+
+                document
+                    .querySelector(
+                        "#palavra-" +
+                        palavraSelecionada
+                    )
+                    .classList.add(
+                        "achou"
+                    );
+
+
+                // =================================================
+                // MOSTRAR ESTRUTURA DO EVENTO
+                // =================================================
+
+                let evento =
+                    palavraSelecionada
+                    .toLowerCase();
+
+
+                alert(
+
+                    "Você encontrou o evento: " +
+
+                    palavraSelecionada +
+
+                    "\n\nEstrutura:\n\n" +
+
+                    'elemento.addEventListener("' +
+
+                    evento +
+
+                    '", function(){\n\n' +
+
+                    '});'
+
+                );
+
+
+                // =================================================
+                // TERMINOU O JOGO
+                // =================================================
+
+                if(
+                    palavrasEncontradas.length ===
+                    palavras.length
+                ){
+
+                    alert(
+                        "Parabéns! Você encontrou todos os eventos!"
+                    );
+
+                }
+
+            }
+
+
+            // =================================================
+            // ERROU
+            // =================================================
+
+            else{
+
+                alert(
+                    "Palavra não encontrada!"
+                );
+
+
+                limparSelecao();
+
+            }
+
+        }
+
+
+        // =====================================================
+        // LIMPAR SELEÇÃO
+        // =====================================================
+
+        function limparSelecao(){
+
+            let letrasSelecionadas =
+                document.querySelectorAll(
+                    ".selecionada"
+                );
+
+
+            letrasSelecionadas.forEach(
+                function(letra){
+
+                    letra.classList.remove(
+                        "selecionada"
+                    );
+
+                }
+            );
+
+
+            inicio = null;
+
+            fim = null;
+
+        }
+
+
+        // =====================================================
+        // EMBARALHAR AUTOMATICAMENTE
+        // A CADA 5 SEGUNDOS
+        // =====================================================
+
+        setInterval(function(){
+
+            // Se já terminou, não precisa embaralhar
+
+            if(
+                palavrasEncontradas.length ===
+                palavras.length
+            ){
+
+                return;
+
+            }
+
+
+            // Cancela uma seleção que esteja pela metade
+
+            inicio = null;
+
+            fim = null;
+
+
+            // Embaralha silenciosamente
+
+            gerarJogo();
+
+        }, 5000);
+
+
+        // =====================================================
+        // COMEÇAR JOGO
+        // =====================================================
+
+        gerarJogo();
+
+    </script>
+
+</body>
+
+</html>

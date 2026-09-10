@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jornada do Código - A Fuga da Masmorra</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>RP simulator</h1>
+    <p>Simulador de jogatina</p>
+  </header>
+
+  <main class="container">
+    
+    <section class="card">
+      <h2>1. Criar Personagem</h2>
+      <div class="input-group">
+        <input type="text" id="nome" placeholder="Nome do Herói">
+        <input type="number" id="idade" placeholder="Idade">
+        <button onclick="criarPersonagem()">Criar</button>
+      </div>
+      <div id="res-1" class="resultado"></div>
+    </section>
+
+    <section class="card">
+      <h2>2. Calcular Dano</h2>
+      <div class="input-group">
+        <input type="number" id="nivel" placeholder="Nível do Herói">
+        <button onclick="executarAtaque()">Calcular Dano</button>
+      </div>
+      <div id="res-2" class="resultado"></div>
+    </section>
+
+    <section class="card">
+      <h2>3. Radar de Inimigos</h2>
+      <p>Radar detectou HPs: <code>[150, 45, 200, 80, 12, 300]</code></p>
+      <button onclick="filtrarInimigos()">Filtrar Fracos (&lt; 100 HP)</button>
+      <div id="res-3" class="resultado"></div>
+    </section>
+
+    <section class="card">
+      <h2>4. Alquimia de Poções</h2>
+      <p>Inventário atual: <code>[5, 12, 8, 20, 3]</code></p>
+      <button onclick="potencializarPocoes()">Melhorar Poções (Dobrar ≤ 10)</button>
+      <div id="res-4" class="resultado"></div>
+    </section>
+
+    <section class="card">
+      <h2>5. Combo de Ataques</h2>
+      <button onclick="executarCombo()">Desferir 5 Golpes!</button>
+      <div id="res-5" class="resultado"></div>
+    </section>
+
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>

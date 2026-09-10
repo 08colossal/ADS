@@ -1,0 +1,69 @@
+Atividade 01:
+
+#include <stdio.h>
+int main(){
+    int num;
+    int count = 0;
+    do{
+        printf("Digite um número | '0' para sair: ");
+        scanf("%d", &num);
+        if (0 < num){
+            count++;
+        }
+    }
+    while(num != 0);
+    printf("Você desligou o programa e digitou %d números positivos.", count);
+    return 0;
+}
+
+
+Atividade 02:
+
+#include <stdio.h>
+int main()
+{
+    int senha;
+    int count = 0;
+    while (senha != 1234){
+            printf("Digite uma senha numérica de 4 digitos: ");
+            scanf("%d", &senha);
+            count++;
+            if (count > 3){
+                printf("Tentativas expiradas!");
+                break;
+            }
+    }
+    if (senha == 1234){
+        printf("Você adivinhou a senha!");
+    }
+    return 0;
+}
+
+
+Atividade 03:
+
+#include <stdio.h>
+int main()
+{
+    int a = 0, b = 0, c = 0, voto;
+    while(voto != 0){
+        printf("\n1 - CANDIDATO A\n2 - CANDIDATO B\n3 - CANDIDATO C\n0 - ENCERRAR VOTAÇÃO\n\nDigite seu voto: ");
+        scanf("%d", &voto);
+        switch (voto){
+            case 1:
+                a++;
+                break;
+            case 2:
+                b++;
+                break;
+            case 3:
+                c++;
+                break;
+            default:
+                printf("Voto inválido!");
+                break;
+        }
+    }
+    printf("Resultado da votação:\nCandidato A: %d votos;\nCandidato B: %d votos;\nCandidato C: %d votos.", a, b, c);
+    return 0;
+}

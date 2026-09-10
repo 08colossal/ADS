@@ -1,0 +1,30 @@
+arquitetura de processadores: contas:: push (pega) pop (coloca) ex pilha: pusha pushb add popc 2 2 + c   c=4   em outras pode ter load=leia e store = guarde
+
+Arquitetura VLIW - funcionamento básico e um estudo de caso (exemplo de implementação, um processador q use tals) explicado. Very Long Instruction Word
+https://ic.ufrj.br/~gabriel/arqcomp2/VLIW.pdf
+https://1library.org/article/estudo-caso-arquitetura-vliw-esquema-codifica%C3%A7%C3%A3o-baseado-padr%C3%B5es.q2gldkey#google_vignette
+
+https://www.ic.unicamp.br/~ducatte/mo401/1s2009/T2/036272-t2.pdf
+
+https://www.clubedohardware.com.br/artigos/processadores/arquitetura-de-64-bits-da-intel-ia-64-r33919/
+
+A sigla VLIW significa “Palavra de Instrução Muito Grande”, do inglês “Very Large Instruction Word”. Processadores que usam essa técnica acessam a memória transferindo longas palavras de programa, sendo que, em cada palavra, estão empacotadas várias instruções. No caso da IA-64, são usadas três instruções para cada pacote de 128 bits. Como cada instrução tem 41 bits, sobram 5 bits que são usados para indicar os tipos de instruções que foram empacotadas. A Figura 1 apresenta o esquema de empacotamento das instruções. Esse empacotamento diminui a quantidade de acessos à memória, cabendo ao compilador a tarefa de agrupar as instruções de forma a tirar o melhor proveito da arquitetura.
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+MACos
+Desvantagens:
+Limitações de hardware : O MacOS é projetado principalmente para hardware da Apple, limitando os usuários a uma gama específica de dispositivos.
+* Custo mais alto: Os produtos da Apple, incluindo Macs, geralmente têm um preço mais alto em comparação às alternativas.
+* Personalização limitada de hardware: Os usuários têm opções limitadas para personalizar e atualizar seus Macs em comparação com os usuários de PC.
+* jogos: O MacOS possui uma biblioteca de jogos menor em comparação com o Windows, com acesso limitado a alguns títulos populares.
+* Compatibilidade limitada: Certos softwares e periféricos podem não ser compatíveis com o MacOS, exigindo que os usuários encontrem alternativas.
+* ecossistema fechado: O rigoroso controle da Apple sobre seu ecossistema pode limitar a liberdade dos usuários em termos de opções de software e hardware.
+* Curva de aprendizado: Enquanto amigável, o MacOS pode ter uma curva de aprendizado mais acentuada para os usuários que mudam de outros sistemas operacionais.
+* Dependência dos serviços da Apple: Alguns recursos e serviços exigem um ID da Apple e a dependência da infraestrutura on -line da Apple.
+https://ptcomputador.com/Sistemas/Apple/308172.html
+https://scholar.google.com/scholar?hl=pt-BR&as_sdt=0%2C5&q=desvantagens+da+mac+os&btnG=
+
+hackintosh: emular um macos usando o bootloader (a tela inicial que carrega o sistema operacional)
+Muitos jogos populares de alto desempenho não possuem versão nativa para macOS, especialmente títulos da Rockstar Games (como GTA V e Red Dead Redemption 2), Elden Ring e Street Fighter.

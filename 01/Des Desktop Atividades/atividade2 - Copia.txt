@@ -1,0 +1,53 @@
+atividade2
+
+//mercado: pedir nome produto e preço, classificar 
+int main()
+{
+    char nome[50];
+    float valor;
+    
+    printf("Qual o nome do produto?");
+    scanf("%s", nome);
+    printf("Qual o valor do produto?");
+    scanf("%f", &valor);
+    
+    if (valor < 20){
+        printf("o produto %s é barato", nome);
+    }
+    else if (valor < 100){
+        printf("O produto %s é mediano", nome);
+    }
+    else{
+        printf("Valor extravagante");
+    }
+
+    return 0;
+}
+
+
+Desafio:
+#include <stdio.h>
+//calcular valor do frete com base no peso
+//pede peso kg: -1 = 10; -5 = 20; 35. 
+int main()
+{
+ int peso;
+ 
+ printf("Qual o peso do pedido?");
+ scanf("%d", &peso);
+ 
+ if (peso <= 0){
+     printf("Valor inválido");
+ }
+ else if (peso <= 1){
+     printf("O valor do frete é R$10,00.");
+ }
+ else if (peso <= 5){
+     printf("O valor do frete é R$20,00.");
+ }
+else{
+    printf("O valor do frete é R$35,00.");
+}
+    return 0;
+}
+

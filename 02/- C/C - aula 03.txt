@@ -1,0 +1,85 @@
+C - aula 03
+
+1.
+- x = 10 e y = 5
+
+2.
+- p recebe o valor de x = 5, q recebe o valor de y = 10;
+p é alterado para 10 + 5 = 15;
+q é alterado para 15 - 10 = 5;
+p é alterado para 15 - 5 = 10;
+
+p = 10 = x; 
+q = 5 = y;
+
+3.
+- Os endereços de p e q continuam os mesmos, mas eles alteram os valores das variáveis de x e y, já que *p e *q é o conteúdo desse endereço, e o endereço de p e q levam ao endereço de x e y;
+
+
+
+#02
+#include <stdio.h>
+
+int maiorValor(int *a, int *b, int *c){
+    int maior = *a;
+    if (*b > maior){
+        maior = *b;
+    }
+    if (*c > maior){
+        maior = *c;
+    }
+    
+    return maior;
+}
+
+int main(void){
+    int x, y, z;
+    
+    printf("Digite os valores inteiros de a, b e c: ");
+    scanf("%d %d %d", &x, &y, &z);
+    
+    int maior = maiorValor(&x, &y, &z);
+    
+    printf("Maior valor: %d", maior);
+    
+    return 0;
+}
+
+
+
+
+#03
+
+#include <stdio.h>
+
+void result(int *a, int *b, int *soma){
+    for (int i = 0; i < 5; i++){
+        *(soma + i) = *(a + i) + *(b + i);
+    }
+}
+
+int main(void){
+    int y[4], z[4], resultado[4];
+    
+    printf("Digite 5 valores para o primeiro vetor:\n");
+    for (int i = 0; i < 5; i++) {
+        scanf("%d", &y[i]);
+    }
+    
+    printf("Digite 5 valores para o segundo vetor:\n");
+    for (int i = 0; i < 5; i++) {
+        scanf("%d", &z[i]);
+    }
+    
+    result(y, z, resultado);
+    
+    printf("Resultado:\n");
+    for (int i = 0; i < 5; i++) {
+        printf("%d", resultado[i]);
+        printf("\n");
+    }
+    
+    printf("\n");
+    
+    return 0;
+}

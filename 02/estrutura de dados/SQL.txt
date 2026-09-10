@@ -1,0 +1,109 @@
+ ________   ________       _________  ________
+|	  |         |	 * |        | |       |
+|	  |   ______|   *  |        | |_______|
+|	  |         |  *   |        |	      |
+|_________| ________| *    |________|  _______|
+
+
+
+Criado nos anos 70 para padronizar;
+
+DDL - data definition language : estrutura, esquema do db | CREATE | ALTER | DROP (apagar -> a estrutura inteira não o dado)
+DML - data manipulation language :  | INSERT | UPDATE | DELETE
+DQL - data query language : consulta | SELECT 
+DCL - data control language : sintaxe de permissão | GRANT | REVOKE
+DTL - data trasaction language : transição, | BEGIN | COMMIT | ROLLBACK
+
+_____________________________________________________________________________________________________________
+
+DTL
+
+sintaxes utilizadas no cod de exemplo:
+BEGIN;
+UPDATE SET WHERE;
+INSERT INTO VALUES;
+COMIT;
+
+_____________________________________________________________________________________________________
+
+esquema	esquema	salario (esquema + dominio)
+extensão/população	extensão/população	dominio
+extensão/população	extensão/população	dominio
+
+Nomes dados aos itens de uma tabela SQL
+----------------------------
+coluna/atributo/campo
+linh/tupla/registro
+tabela/relação/arquivo
+----------------------------
+
+
+
+Clientes (0, n) - FAZ - (1,1) Pedido
+
+
+
+DOMÍNIOS
+:
+
+INTEGER           4 bytes
+BIGINT            8 bytes
+SMALLINT          2 bytes
+NUMERIC/decimal   variável (você define as casas decimais)
+REAL              4 bytes (salva a conta ex 1.8 * 10^-38)
+DOUBLE PRECISION  8 bytes (salva a conta ex 1.8 * 10^-308)
+
+
+ex:
+CREATE TABLE Numeros{
+
+small_int_col SMALL INT,
+integer_col INTEGER,
+numeric_col NUMERIC(10, 2),
+
+}
+
+
+
+
+Tipos de dados_texto : 
+CHAR(n)      string fixa ex: UF : PR, SP...
+VARCHAR(n)   string variável ex: endereço...
+TEXT	     textos longos ex: corpo de uma noticia, comentários...
+
+
+
+ex:
+CREATE TABLE campos_texto{
+char_col CHAR(n),
+}
+
+
+
+Tipos de dados tempo:
+DATE			data			
+TIME			hora
+INTERVAL		duração - intervalo
+TIMESTAMP		data e hora
+TIMESTAMP WITH TIMEZONE	+ fuso horário
+
+BOOLEAN - se n tiver, usa smallint 0 e 1
+
+BYTEA - binários
+ENUM - conjunto de valores
+Tem os tipos geométricos...
+
+Tem os tipos de rede:
+INET - endereço IP
+CIDR - bloco IP
+MACADDR - endereco mac
+
+*****tem uma lista nos slides e hj 03/09 com vários outros
+
+
+--------------------------------------------------------------------------------------
+
+POSTGRESQL:
+
+
+
