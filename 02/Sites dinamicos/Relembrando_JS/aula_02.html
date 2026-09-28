@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    
+    <script>
+        // Cria uma variável chamada valor valor_a e valor_B
+        // pede ao usuário para digitar os respectivos valores
+        // e encaminha um alerta na tela !
+        //let valor_a = Number(prompt("Digite um valor A:"));
+        //let valor_b = Number(prompt("Digite um valor B:"));
+        //alert(typeof(valor_a));
+        // type of retorna o tipo da minha variável, não o valor que
+        // esta dentro dela !
+
+        // Com base em um vetor preenchido, preencha um
+        // novo vetor números > 5 (Jeito Iniciante) !
+        //let vetor_numerico = [2, 3, 4, 5, 6, 7, 8, 10];
+                            //0, 1, 2, 3, 4, 5, 6, 7
+        //let novo_vetor = [];
+        //for(let i=0; i < vetor_numerico.length; i++){
+        //    if(vetor_numerico[i] > 5){
+        //        novo_vetor[i] = vetor_numerico[i];
+        //    }
+        //}
+        //console.log(novo_vetor);
+
+        //Jeito eficiente ! Filter é uma função que de acordo com minha condição adiciona novos elementos !
+        //Função sem parâmetros não recebe valor algum, agora com parâmetros pode receber
+        let vetor_numerico = [2, 3, 4, 5, 6, 7, 8, 10];
+        let novo_vetor = vetor_numerico.map(function(numero){
+            return numero * 6;
+        });
+        console.log(novo_vetor);
+    </script>
+
+</body>
+
+
+</html>
