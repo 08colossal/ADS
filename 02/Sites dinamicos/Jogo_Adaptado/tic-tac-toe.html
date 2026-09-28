@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Velha</title>
+    <script src="logica.js" defer></script>
+    <link rel="stylesheet" href="botoes.css">
+</head>
+<body>
+    <section class="infos">
+        <h1>Jogo da Velha</h1>
+        <h3 id="status"></h3>
+        <div id="placar">
+            <h3>Placar</h3>
+            <p>Jogador X: <span id="X"></span></p>
+            <p>Jogador O: <span id="O"></span></p>
+        </div>
+    </section>
+
+    <section class="jogo">
+        <div class="linha">
+            <button id="botao1" onclick="acao(1)"></button>
+            <button id="botao2" onclick="acao(2)"></button>
+            <button id="botao3" onclick="acao(3)"></button>
+        </div>
+        <div class="linha">
+            <button id="botao4" onclick="acao(4)"></button>
+            <button id="botao5" onclick="acao(5)"></button>
+            <button id="botao6" onclick="acao(6)"></button>
+        </div>
+        <div class="linha">
+            <button id="botao7" onclick="acao(7)"></button>
+            <button id="botao8" onclick="acao(8)"></button>
+            <button id="botao9" onclick="acao(9)"></button>
+        </div>
+    </section>
+</body>
+</html>
