@@ -14,9 +14,14 @@
     align-items:center;
 }
 
+.infos h1{
+    font-size: 50px;
+    color: #f3f3f3;
+}
+
 #placar{
     font-size: 20px;
-    color: #000000;
+    color: #f3f3f3;
 }
 
 .linha{
