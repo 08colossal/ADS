@@ -98,7 +98,11 @@ function acao(n){
     else if(venceu === "O"){
         O++;
         placarO.innerText = O;
-        setTimeout(limpar, 300);
+        setTimeout(limpar, 300); //aplica a função com delay
+    }
+
+    else{
+        setTimeout(empate, 300); //aplica a função com delay
     }
             
     console.log("Vencedor: " + verificarVencedor());
