@@ -1,0 +1,21 @@
+"Empacotar"
+"Desempacotar" -> unwrap -> mudar para tipo primitivo Integer -> int
+
+tipos primitivos viram classes:
+
+int -> Integer
+long -> Long
+bool -> Boolean
+double -> Double
+
+ex: 
+
+# boxing
+int num = 10;
+Integer caixa = numero;
+
+# unboxing
+Integer outro = 10;
+int a = outro;
+
+valueOf		|	parse  	|	== -> 'equals' ex( Integer x = 100; Integer y = 100; 					x == y; retorna false | x.equals(y); retorna true  )

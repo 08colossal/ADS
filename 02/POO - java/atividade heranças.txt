@@ -1,0 +1,8 @@
+atividade heranças:
+A partir do conteúdo da aula de herança, identifique a ferramenta correta (classe abstrata, classe concreta ou interface) para cada uma das situações a seguir:
+1 - Clientes: alguns são empresas, com CNPJ e razão social. O cliente comum já é cadastrado normalmente. CONCRETA
+2 - Serviços: troca de óleo, alinhamento, balanceamento. Todos têm descrição; cada um calcula o preço de um jeito. Não existe “serviço genérico”. ABSTRATA
+3 - Elevador hidráulico, carro e moto passam por inspecionar() . O elevador é equipamento; carro e moto são veículos. INTERFACE
+4 - App de loja: Pix, Cartão e Boleto processam pagamentos. Todos têm valor e data; cada um processa de um jeito. ABSTRATA
+5 - Zoológico: Águia e Pinguim são aves. Só a águia voa. INTERFACE
+6 - Um Carro precisa de um Motor com potência e cilindrada. ATRIBUTO
