@@ -1,0 +1,3 @@
+Questão 5. Alternativa a)
+
+- Animal é uma classe abstrata, ela é utilizada como molde, com os atributos comuns das subclasses - que herdam essas características. Além disso, ela não gera instâncias, por ser um molde - nesse exemplo. Serve para evitar repetições desnecessárias e deixar o sistema organizado.
