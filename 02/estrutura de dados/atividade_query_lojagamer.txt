@@ -1,0 +1,32 @@
+SET search_path TO loja_gamer, public;
+
+select count(*) from clientes where ativo = true;
+select ativo, count(*) from clientes group by ativo;
+select count(*) from clientes where estado = 'PR';
+
+select ativo, SUM(estoque) as soma from produtos group by ativo;
+select sum(pontos) as pontos from clientes where ativo = true;
+select sum(valor_total) as total from pedidos where situacao = 'Pago';
+
+select avg(preco) from produtos where ativo = true;
+select avg(pontos) from clientes where ativo = false;
+
+select min(data_pedido) as minimo, max(data_pedido) as maximo from pedidos;
+
+select count(*) as qtd, estado from clientes group by estado;
+select count(*) as qtd, cidade from clientes group by cidade order by cidade asc;
+select count(*) as qtd, marca from produtos group by marca;
+select count(*) as qtd, categoria, round(avg(preco),2) as media from produtos group by categoria order by media desc;
+select nome from produtos where ativo = 'true' and nome like '%Gamer%';
+
+-- consultas combinadas
+select count(*) as qtd from produtos group by categoria order by qtd desc;
+select sum(valor_total) as soma, forma_pagamento from pedidos where situacao = 'Pago' group by forma_pagamento order by soma desc;
+select min(preco) as minimo, max(preco) as maximo, round(avg(preco),2) as media, marca from produtos group by marca order by marca asc;
+select count(*) as qtd, round(avg(preco),2) as media from produtos where ativo = 'true' and nome like '%Gamer%' group by categoria order by media desc;
+select situacao, forma_pagamento, count(*) as qtd_pedidos, round(avg(valor_total),2) as media, sum(valor_total) as soma_valores from pedidos
+	group by situacao, forma_pagamento order by situacao asc, soma_valores desc;
+-- group by situacao e pagamento -- mostre situacao forma qtd soma media
+
+select * from produtos
+select * from pedidos
