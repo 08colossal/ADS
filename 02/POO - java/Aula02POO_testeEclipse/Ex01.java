@@ -18,6 +18,7 @@ public class Ex01 {
         System.out.println("Digite um número inteiro: ");
         int num = scan.nextInt();
         Ex01.posNeg(num);
-    }
 
+        scan.close();
+    }
 }

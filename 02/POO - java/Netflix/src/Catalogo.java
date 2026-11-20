@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
 public class Catalogo{
-    privateArrayList<Conteudo> conteudos = new ArrayList<>(); //<Tipo a ser guardado> | é uma lista de VETORES, ent dá pra adicionar bastante coisa
+    private ArrayList<Conteudo> conteudos = new ArrayList<>(); //<Tipo a ser guardado> | é uma lista de VETORES, ent dá pra adicionar bastante coisa
 
     public void adicionar(Conteudo conteudo){
-        conteudos.add(Conteudo);
+        conteudos.add(conteudo);
     }
 
-    public void ListarTodos(){
+    public void listarTodos(){
         for (Conteudo conteudo : conteudos){
             System.out.println(conteudo.exibirDetalhes());
         }
@@ -19,5 +19,6 @@ public class Catalogo{
                 return conteudo;
             }
         }
+        return null;
     }
 }

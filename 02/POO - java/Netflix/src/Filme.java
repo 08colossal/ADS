@@ -1,7 +1,7 @@
 public class Filme extends Conteudo{ //utiliza atributos da classe Conteudo
     private String diretor;
 
-    public Filme(Strinf titulo, int duracao, String diretor){
+    public Filme(String titulo, int duracao, String diretor){
         super(titulo, duracao); //puxa da classe mãe
         this.diretor = diretor;
     }

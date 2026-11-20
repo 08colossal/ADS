@@ -26,6 +26,8 @@ public class Ex02 {
         System.out.println("Sua idade: ");
         int num = scan.nextInt();
         Ex02.votos(num);
+
+        scan.close();
     }
 
 }

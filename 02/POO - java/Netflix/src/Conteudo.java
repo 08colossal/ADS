@@ -4,7 +4,7 @@ public class Conteudo {
 
     public Conteudo(String titulo, int duracao){
         if(duracao <= 0){
-            throw nhe IllegalArgumentException("A duração deve ser positiva");
+            throw new IllegalArgumentException("A duração deve ser positiva");
         }
         this.titulo = titulo; //definenome da variavel
         this.duracao = duracao;

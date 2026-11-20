@@ -1,7 +1,7 @@
 public class Serie extends Conteudo{
     private int temporadas;
 
-    public String(String titulo, int duracao, int temporadas){
+    public Serie(String titulo, int duracao, int temporadas){
         super(titulo, duracao);
         this.temporadas = temporadas;
     }
